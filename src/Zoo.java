@@ -9,11 +9,35 @@ public class Zoo {
         System.out.println("Type the name of an animal");
         String animalName = scanner.nextLine();
         Animal animal = createsAnimal(animalName);
-        System.out.println(String.format("Created %s! YOU'RE A GOD!", animal));
+        System.out.println(String.format("Created %s!", animal));
     }//end main method
 
     static Animal createsAnimal(String animalName) {
-        if (animalName.equals("Snek")){
+        Animal animal;
+        switch (animalName) {    //switch statement is an alternative to if loop
+            case "Snek":
+                animal = new Snake();
+                break;
+            case "Lion":
+                animal = new Lion();
+                break;
+            case "Condor":
+                animal = new Condor();
+                break;
+            case "alligator":
+                animal = new Reptile(){
+                    @Override
+                    public String toString(){
+                        return "Alligator";
+                    }
+                };
+                break;
+            default:
+                animal = new Animal();
+        }
+        return animal;
+
+      /*  if (animalName.equals("Snek")){
              return new Snake();
         } else if(animalName.equals("Lion")){
                 return new Lion();
@@ -22,6 +46,7 @@ public class Zoo {
         } else {
                 return new Animal();
         }
+    }*/
     }
 }
 
